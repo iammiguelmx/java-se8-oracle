@@ -3,6 +3,7 @@ package modelo;
 import java.io.Serializable;
 import java.time.LocalDate;
 import static java.time.temporal.ChronoUnit.YEARS;
+import java.util.ArrayList;
 
 /**
  * @author Miguel Camacho
@@ -14,7 +15,7 @@ public class Persona implements Serializable {
     private String nombre;
     private String domicilio;
     private LocalDate fechaNacimiento;
-    private final String[] lenguajes = new String[5];
+    private ArrayList<String> lenguajes = new ArrayList<String>();
     private int edad;
     private static String nacionalidad = "Mexicana";
 
@@ -40,7 +41,7 @@ public class Persona implements Serializable {
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.edad = edad;
-        this.lenguajes[0] = "Español";
+        this.lenguajes.add("Español");
     }
 
     public Persona(String nombre, int edad) {
@@ -73,13 +74,6 @@ public class Persona implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getLenguaje() {
-        return lenguajes[0];
-    }
-
-    public void setLenguaje(String lenguaje) {
-        this.lenguajes[0] = lenguaje;
-    }
 
     public int getEdad() {
         return edad;
@@ -97,8 +91,9 @@ public class Persona implements Serializable {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setFechaNacimiento(int dia, int mes, int año) {
+        this.fechaNacimiento = LocalDate.of(año, mes,dia);
+        edad = calculaEdad();
     }
 
     // Bussines Object
@@ -111,25 +106,22 @@ public class Persona implements Serializable {
     }
     
     private int calculaEdad(){
-         int laEdad = (int)YEARS.between(fechaNacimiento,LocalDate.now());
-         return laEdad;
+         return (int)YEARS.between(fechaNacimiento,LocalDate.now());
     }
 
     public void addLenguaje(String lenguaje) {
-        int i = 0;
-        while (lenguajes[i] != null && i < lenguajes.length - 1) {
-            i++;
-        }
-        lenguajes[i] = lenguaje;
+       lenguajes.add(lenguaje);
+    }
+    
+    public void quitarLenguaje(String lenguaje){
+        lenguajes.remove(lenguaje);
     }
 
     public void impirmirLenguajes() {
         System.out.println("Nombre:  " + nombre);
-        System.out.println("Lenguajes");
+        System.out.println("Lenguajes que domina");
         for (String lenguaje : lenguajes) {
-            if (lenguaje != null) {
                 System.out.println("  " + lenguaje);
-            }
         }
     }
 }

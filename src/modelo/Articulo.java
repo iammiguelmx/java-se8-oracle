@@ -19,7 +19,10 @@ public class Articulo implements Serializable {
         this.descuento = descuento;
     }
     
-      
+     public Articulo(int codigo, String descripcion, double precio) {
+        this(codigo,  descripcion,  precio, 0);
+    }
+    
     public int getCodigo() {
         return codigo;
     }
