@@ -1,6 +1,8 @@
 package modelo;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import static java.time.temporal.ChronoUnit.YEARS;
 
 /**
  * @author Miguel Camacho
@@ -11,12 +13,20 @@ public class Persona implements Serializable {
 
     private String nombre;
     private String domicilio;
+    private LocalDate fechaNacimiento;
     private final String[] lenguajes = new String[5];
     private int edad;
     private static String nacionalidad = "Mexicana";
 
     public Persona() {
         System.out.println("Called since PersonaBean");
+    }
+
+    public Persona(String nombre, String domicilio, int dia, int mes, int año) {
+        this.nombre = nombre;
+        this.domicilio = domicilio;
+        this.fechaNacimiento = LocalDate.of(año, mes, dia);
+        this.edad =calculaEdad();
     }
 
     /**
@@ -46,7 +56,7 @@ public class Persona implements Serializable {
         return "Persona{" + "nombre=" + nombre + ", domicilio=" + domicilio
                 + ", edad=" + edad + '}';
     }
-    
+
     public String getDomicilio() {
         return domicilio;
     }
@@ -74,8 +84,23 @@ public class Persona implements Serializable {
     public int getEdad() {
         return edad;
     }
-
     
+    public static String getNacionalidad() {
+        return nacionalidad;
+    }
+
+    public static void setNacionalidad(String nacionalidad) {
+        Persona.nacionalidad = nacionalidad;
+    }
+
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
     // Bussines Object
     public void setEdad(int edad) {
         if (edad > 0) {
@@ -85,12 +110,9 @@ public class Persona implements Serializable {
         }
     }
     
-     public static String getNacionalidad() {
-        return nacionalidad;
-    }
-
-    public static void setNacionalidad(String nacionalidad) {
-        Persona.nacionalidad = nacionalidad;
+    private int calculaEdad(){
+         int laEdad = (int)YEARS.between(fechaNacimiento,LocalDate.now());
+         return laEdad;
     }
 
     public void addLenguaje(String lenguaje) {

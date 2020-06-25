@@ -32,6 +32,11 @@ public class inicio {
         Articulo articulo = new Articulo(1, "Disco Duro 1 TB Samsung", 1000.00D, 5);
         System.out.println(articulo);
         System.out.println("*******************************");
+        
+        
+        Persona p = new Persona("Miguel Camacho", "San Felipe", 15, 8, 1998);
+        System.out.println(p.getNombre() + " Nacio el " + p.getFechaNacimiento());
+        System.out.println(p);
     }
 
 }
