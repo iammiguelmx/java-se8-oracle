@@ -47,13 +47,20 @@ public class inicio {
         compras.agregarArticulo(articulo);
         compras.agregarArticulo(articulo1);
         compras.listarArticulos();
-        System.out.println(compras.buscarArticulo(1));
+        
+        Articulo buscar;
+        try{
+            buscar = compras.buscarArticulo(100);
+        } catch (NoSeEncontroElArticuloException ex){
+        }
         compras.eliminarArticulo(1);
-        System.out.println(compras.buscarArticulo(2));
+        
         compras.listarArticulos();
         System.out.println("********************************");
         
-        
+        /**
+         * Used LinkedList because has better performace thah ArrayList
+         */
         System.out.println("Agregando clientes");
         Tienda tienda = new Tienda();
         tienda.altaCliente(cliente2);

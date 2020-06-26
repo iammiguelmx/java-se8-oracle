@@ -1,7 +1,6 @@
 package modelo;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  *
@@ -30,34 +29,37 @@ public class CarritoDeCompras implements OperaArticulos {
     }
 
     @Override
-    public void eliminarArticulo(int codigo) {
-        Iterator it = articulos.iterator();
-        while (it.hasNext()) {
-            Articulo a = (Articulo) it.next();
-            if (a.getCodigo() == codigo) {
-                it.remove();
-                System.out.println("The element is removed");
-                break;
-            }
+    public void eliminarArticulo(int codigo)  {
+        Articulo a = null;
+        try {
+            a =  buscarArticulo(codigo);
+        if (a!=null) {
+            articulos.remove(a);
+        }
+        } catch (NoSeEncontroElArticuloException e){
+            System.out.println("No se puede eliminar al "
+                    + "articulo porque no existe: " + codigo);
         }
     }
 
     @Override
-    public Articulo buscarArticulo(int codigo) {
+    public Articulo buscarArticulo(int codigo) throws NoSeEncontroElArticuloException {
         for (Articulo articulo : articulos) {
             if (articulo.getCodigo() == codigo) {
                 return articulo;
             }
         }
-        return null;
+        System.out.println("No se encontro el articulo con codigo: " + codigo);
+        throw new NoSeEncontroElArticuloException();
     }
 
     @Override
     public synchronized void listarArticulos() {
-        Iterator it = articulos.iterator();
-        while (it.hasNext()) {
-            System.err.println(it.next());
-        }
+        System.out.println("**********LIST ARTICULOS *****");
+        articulos.forEach((a) -> {
+            System.out.println(a);
+        });
+        System.out.println("********************");
     }
 
 }

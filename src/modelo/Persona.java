@@ -4,18 +4,20 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import static java.time.temporal.ChronoUnit.YEARS;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author Miguel Camacho
  * @version 1.0
- * @see This a PersonaBean.java
+ * @see This a PersonaBean.java Esto es un estereotipo
  */
 public class Persona implements Serializable {
 
     private String nombre;
     private String domicilio;
     private LocalDate fechaNacimiento;
-    private ArrayList<String> lenguajes = new ArrayList<String>();
+    private List<String> lenguajes = new LinkedList<String>();
     private int edad;
     private static String nacionalidad = "Mexicana";
 
@@ -27,7 +29,7 @@ public class Persona implements Serializable {
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.fechaNacimiento = LocalDate.of(año, mes, dia);
-        this.edad =calculaEdad();
+        this.edad = calculaEdad();
     }
 
     /**
@@ -74,11 +76,10 @@ public class Persona implements Serializable {
         this.nombre = nombre;
     }
 
-
     public int getEdad() {
         return edad;
     }
-    
+
     public static String getNacionalidad() {
         return nacionalidad;
     }
@@ -92,7 +93,7 @@ public class Persona implements Serializable {
     }
 
     public void setFechaNacimiento(int dia, int mes, int año) {
-        this.fechaNacimiento = LocalDate.of(año, mes,dia);
+        this.fechaNacimiento = LocalDate.of(año, mes, dia);
         edad = calculaEdad();
     }
 
@@ -104,16 +105,16 @@ public class Persona implements Serializable {
             System.err.println("¡No se permiten edade invalidas!");
         }
     }
-    
-    private int calculaEdad(){
-         return (int)YEARS.between(fechaNacimiento,LocalDate.now());
+
+    private int calculaEdad() {
+        return (int) YEARS.between(fechaNacimiento, LocalDate.now());
     }
 
     public void addLenguaje(String lenguaje) {
-       lenguajes.add(lenguaje);
+        lenguajes.add(lenguaje);
     }
-    
-    public void quitarLenguaje(String lenguaje){
+
+    public void quitarLenguaje(String lenguaje) {
         lenguajes.remove(lenguaje);
     }
 
@@ -121,7 +122,12 @@ public class Persona implements Serializable {
         System.out.println("Nombre:  " + nombre);
         System.out.println("Lenguajes que domina");
         for (String lenguaje : lenguajes) {
-                System.out.println("  " + lenguaje);
+            System.out.println("  " + lenguaje);
         }
     }
+
+    public  void saluda(){
+        
+    }
+
 }

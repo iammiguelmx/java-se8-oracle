@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.LinkedList;
 
 /**
  *
@@ -14,14 +8,14 @@ import java.util.Iterator;
  */
 public class Tienda implements ManejaClientes {
 
-    private final ArrayList<Cliente> clientes;
+    private final LinkedList<Cliente> clientes;
     private int numero;
     private String domicilio;
     private String telefono;
     private String rfc;
 
     public Tienda() {
-        clientes = new ArrayList<>();
+        clientes = new LinkedList<>();
     }
 
     public int getNumero() {
@@ -56,7 +50,7 @@ public class Tienda implements ManejaClientes {
         this.rfc = rfc;
     }
 
-    public ArrayList<Cliente> getClientes() {
+    public LinkedList<Cliente> getClientes() {
         return clientes;
     }
 
@@ -70,17 +64,12 @@ public class Tienda implements ManejaClientes {
     public void altaCliente(Cliente cliente) {
         clientes.add(cliente);
     }
-
+    
     @Override
     public void bajaCliente(int numero) {
-        Iterator it = clientes.iterator();
-        while (it.hasNext()) {
-            Cliente c = (Cliente) it.next();
-            if (c.getNumero() == numero) {
-                it.remove();
-                System.out.println("The element is removed");
-                break;
-            }
+       Cliente c = buscarCliente(numero);
+        if (c!=null) {
+            clientes.remove(c);
         }
     }
 
@@ -101,11 +90,12 @@ public class Tienda implements ManejaClientes {
 
     @Override
     public synchronized void imprimeClientes() {
-        Iterator it = clientes.iterator();
-        while (it.hasNext()) {
-            System.out.println("Imprime clientes");
-            System.out.println(it.next());
-        }
+       System.out.println("**********LIST CLIENTES *****");
+       clientes.forEach((c) -> {
+            System.out.println(c);
+        });
+        System.out.println("****************************");
     }
+   
 
 }

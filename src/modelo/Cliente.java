@@ -19,6 +19,8 @@ public class Cliente extends Persona implements Serializable {
         this.correo = correo;
     }
 
+    
+
     public int getNumero() {
         return numero;
     }
@@ -55,6 +57,11 @@ public class Cliente extends Persona implements Serializable {
     @Override
     public String toString() {
         return super.toString() + "Cliente{" + "numero=" + numero + ", rfc=" + rfc + ", correo=" + correo + '}';
+    }
+
+    @Override
+    public void saluda() {
+        System.out.println("Soy un cliente .. y mi numero de cliente es: " + numero);
     }
 
 }
