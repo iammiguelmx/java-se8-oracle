@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class CarritoDeCompras implements OperaArticulos {
 
-    private final ArrayList<Articulo> articulos;
+    protected final ArrayList<Articulo> articulos;
 
     public ArrayList<Articulo> getArticulo() {
         return articulos;

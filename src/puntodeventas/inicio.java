@@ -45,17 +45,17 @@ public class inicio {
         CarritoDeCompras compras = new CarritoDeCompras();
         System.out.println("**************Agrega Articulo*********");
         compras.agregarArticulo(articulo);
-        compras.agregarArticulo(articulo1);
-        compras.listarArticulos();
+//        compras.agregarArticulo(articulo1);
+//        compras.listarArticulos();
         
-        Articulo buscar;
-        try{
-            buscar = compras.buscarArticulo(100);
-        } catch (NoSeEncontroElArticuloException ex){
-        }
-        compras.eliminarArticulo(1);
-        
-        compras.listarArticulos();
+//        Articulo buscar;
+//        try{
+//            buscar = compras.buscarArticulo(100);
+//        } catch (NoSeEncontroElArticuloException ex){
+//        }
+//        compras.eliminarArticulo(1);
+//        
+//        compras.listarArticulos();
         System.out.println("********************************");
         
         /**
@@ -67,6 +67,11 @@ public class inicio {
         tienda.imprimeClientes();
         System.out.println(tienda.buscarCliente(1));
         
+        
+        System.out.println("***************");
+        TicketDeCompra cc = new TicketDeCompra();
+        cc.calculaTotal();
+        cc.imprimeTicket();
 
     }
 

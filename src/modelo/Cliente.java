@@ -11,6 +11,7 @@ public class Cliente extends Persona implements Serializable {
     private int numero;
     private String rfc;
     private String correo;
+    private CarritoDeCompras carrito;
 
     public Cliente(String nombre, String domicilio, String rfc, String correo) {
         super(nombre, domicilio, 0);
@@ -19,7 +20,14 @@ public class Cliente extends Persona implements Serializable {
         this.correo = correo;
     }
 
-    
+    public CarritoDeCompras getCarrito() {
+        return carrito;
+    }
+
+    public void setCarrito(CarritoDeCompras carrito) {
+        this.carrito = carrito;
+    }
+
 
     public int getNumero() {
         return numero;
