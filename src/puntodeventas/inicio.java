@@ -12,10 +12,10 @@ public class inicio {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        Persona p = new Persona("Miguel", "San Felipe,Gto ", 21);
-//        p.addLenguaje("Aleman");
-//        p.impirmirLenguajes();
-//        System.out.println(p);
+        Persona p = new Persona("Miguel", "San Felipe,Gto ", 21);
+        p.addLenguaje("Aleman");
+        p.impirmirLenguajes();
+        System.out.println(p);
 
         Cliente cliente1 = new Cliente("Miguel", "San Felipe", "MACC10998XXXX", "");
         cliente1.setEdad(21);
@@ -37,9 +37,9 @@ public class inicio {
         System.out.println(articulo);
         System.out.println("*******************************");
 
-        Persona p = new Persona("Miguel Camacho", "San Felipe", 15, 8, 1998);
-        System.out.println(p.getNombre() + " Nacio el " + p.getFechaNacimiento());
-        System.out.println(p);
+        Persona p1 = new Persona("Miguel Camacho", "San Felipe", 15, 8, 1998);
+        System.out.println(p1.getNombre() + " Nacio el " + p1.getFechaNacimiento());
+        System.out.println(p1);
 
         System.out.println("******************");
         CarritoDeCompras compras = new CarritoDeCompras();
@@ -52,6 +52,14 @@ public class inicio {
         System.out.println(compras.buscarArticulo(2));
         compras.listarArticulos();
         System.out.println("********************************");
+        
+        
+        System.out.println("Agregando clientes");
+        Tienda tienda = new Tienda();
+        tienda.altaCliente(cliente2);
+        tienda.imprimeClientes();
+        System.out.println(tienda.buscarCliente(1));
+        
 
     }
 

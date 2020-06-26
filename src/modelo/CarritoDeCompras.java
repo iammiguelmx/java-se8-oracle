@@ -31,14 +31,15 @@ public class CarritoDeCompras implements OperaArticulos {
 
     @Override
     public void eliminarArticulo(int codigo) {
-       Iterator it = articulos.iterator();
-       while (it.hasNext()){
-           Articulo a = (Articulo) it.next();
-           if (a.getCodigo() == codigo) {
-               it.remove();
-           }
-       }
-        System.out.println("Remove successfully");
+        Iterator it = articulos.iterator();
+        while (it.hasNext()) {
+            Articulo a = (Articulo) it.next();
+            if (a.getCodigo() == codigo) {
+                it.remove();
+                System.out.println("The element is removed");
+                break;
+            }
+        }
     }
 
     @Override
