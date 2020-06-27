@@ -1,6 +1,6 @@
 package modelo;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  *
@@ -8,14 +8,14 @@ import java.util.ArrayList;
  */
 public class CarritoDeCompras implements OperaArticulos {
 
-    protected final ArrayList<Articulo> articulos;
+    protected final LinkedList<Articulo> articulos;
 
-    public ArrayList<Articulo> getArticulo() {
+    public LinkedList<Articulo> getArticulo() {
         return articulos;
     }
 
     public CarritoDeCompras() {
-        articulos = new ArrayList<>();
+        articulos = new LinkedList<>();
     }
 
     @Override

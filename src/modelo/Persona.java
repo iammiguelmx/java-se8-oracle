@@ -3,7 +3,6 @@ package modelo;
 import java.io.Serializable;
 import java.time.LocalDate;
 import static java.time.temporal.ChronoUnit.YEARS;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class Persona implements Serializable {
     private String nombre;
     private String domicilio;
     private LocalDate fechaNacimiento;
-    private List<String> lenguajes = new LinkedList<String>();
+    private final List<String> lenguajes = new LinkedList<>();
     private int edad;
     private static String nacionalidad = "Mexicana";
 
@@ -119,11 +118,12 @@ public class Persona implements Serializable {
     }
 
     public void impirmirLenguajes() {
+        System.out.println("***Imprimiento lenguajes *******");
         System.out.println("Nombre:  " + nombre);
         System.out.println("Lenguajes que domina");
-        for (String lenguaje : lenguajes) {
+        lenguajes.forEach((lenguaje) -> {
             System.out.println("  " + lenguaje);
-        }
+        });
     }
 
     public  void saluda(){

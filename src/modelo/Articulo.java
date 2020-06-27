@@ -48,8 +48,6 @@ public class Articulo implements Serializable {
         this.iva = iva;
     }
     
-    
-
     public double getPrecio() {
         return precio;
     }

@@ -58,21 +58,21 @@ public class TicketDeCompra extends CarritoDeCompras {
     }
 
     private void calculaSubtotal() {
-        for (Articulo a : articulos) {
-            subtotal = subtotal + a.getPrecio();
-        }
+        articulos.forEach((a) -> {
+            subtotal += a.getPrecio();
+        });
     }
 
     private void calculaDescuento() {
-        for (Articulo a : articulos) {
-            descuento = descuento + a.getDescuento();
-        }
+        articulos.forEach((a) -> {
+            descuento +=  + a.getDescuento();
+        });
     }
 
     private void calculaIva() {
-        for (Articulo a : articulos) {
-            totalIva = totalIva + (a.getPrecio() - a.getDescuento()) * a.getIva() / 100;
-        }
+        articulos.forEach((a) -> {
+            totalIva +=  (a.getPrecio() - a.getDescuento()) * a.getIva() / 100;
+        });
     }
 
     public void calculaTotal() {

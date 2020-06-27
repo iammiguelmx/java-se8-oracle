@@ -8,68 +8,52 @@ import modelo.*;
  */
 public class inicio {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        Persona p = new Persona("Miguel", "San Felipe,Gto ", 21);
+
+        System.out.println("********Agregando personas al sistema********");
+        Persona p = new Persona("Miguel", "San Felipe,Gto ", 15, 8, 1998);
+        System.out.println(p.getNombre() + " Nacio el " + p.getFechaNacimiento());
+        System.out.println("*******Agregando lenguajes a las personas****");
         p.addLenguaje("Aleman");
         p.impirmirLenguajes();
         System.out.println(p);
 
-        Cliente cliente1 = new Cliente("Miguel", "San Felipe", "MACC10998XXXX", "");
+        System.out.println("*******Agregando clientes al sistema*********");
+        Cliente cliente1 = new Cliente("Miguel", "San Felipe", "MACC10998XXXX", "miguel.cam.mx@gmail.com");
         cliente1.setEdad(21);
+        System.out.println("*****Agregando lenguajes al cliente*****");
+        cliente1.addLenguaje("Chino");
+        cliente1.addLenguaje("Ruso");
+        cliente1.addLenguaje("Otomi");
+        cliente1.impirmirLenguajes();
 
-        Cliente cliente2 = new Cliente("Angel", "Dolores Hidalgo", "MACC10998XXXX",
-                "angel.cam.mx@gmail.com");
-        cliente2.addLenguaje("Chino");
-        cliente2.addLenguaje("Mexicano");
-        cliente2.addLenguaje("Ruso");
-        cliente2.addLenguaje("Otomi");
-        cliente2.impirmirLenguajes();
+        System.out.println("******Agregando articulos******");
+        Articulo a1 = new Articulo(100, "Cereal de 100gr", 12.50, 20);
+        Articulo a2 = new Articulo(105, "Cafe de 200gr", 110);
+        Articulo a3 = new Articulo(110, "Leche 1 Lt", 17.50, 10);
+        Articulo a4 = new Articulo(120, "Azucar 1 kg", 30);
+        Articulo a5 = new Articulo(130, "Cepillo de dientes", 15, 5);
 
-        System.out.println(cliente1);
-        System.out.println(cliente2);
-
-        System.out.println("****AGRGANDO UN ARTICULO*******");
-        Articulo articulo = new Articulo(1, "Disco Duro 1 TB Samsung", 1000.00D, 5);
-        Articulo articulo1 = new Articulo(2, "Mac Air", 1800.00D, 5);
-        System.out.println(articulo);
-        System.out.println("*******************************");
-
-        Persona p1 = new Persona("Miguel Camacho", "San Felipe", 15, 8, 1998);
-        System.out.println(p1.getNombre() + " Nacio el " + p1.getFechaNacimiento());
-        System.out.println(p1);
-
-        System.out.println("******************");
-        CarritoDeCompras compras = new CarritoDeCompras();
-        System.out.println("**************Agrega Articulo*********");
-        compras.agregarArticulo(articulo);
-//        compras.agregarArticulo(articulo1);
-//        compras.listarArticulos();
-        
-//        Articulo buscar;
-//        try{
-//            buscar = compras.buscarArticulo(100);
-//        } catch (NoSeEncontroElArticuloException ex){
-//        }
-//        compras.eliminarArticulo(1);
-//        
-//        compras.listarArticulos();
-        System.out.println("********************************");
-        
-        /**
-         * Used LinkedList because has better performace thah ArrayList
-         */
-        System.out.println("Agregando clientes");
-        Tienda tienda = new Tienda();
-        tienda.altaCliente(cliente2);
-        tienda.imprimeClientes();
-        System.out.println(tienda.buscarCliente(1));
-        
-        
-        System.out.println("***************");
         TicketDeCompra cc = new TicketDeCompra();
+        System.out.println("*****Agregando articulos al carrito de compra****");
+        cc.agregarArticulo(a1);
+        cc.agregarArticulo(a2);
+        cc.agregarArticulo(a4);
+        cc.agregarArticulo(a5);
+        cc.agregarArticulo(a3);
+        cc.listarArticulos();
+
+        Articulo buscar;
+        try {
+            buscar = cc.buscarArticulo(100);
+        } catch (NoSeEncontroElArticuloException ex) {
+
+        }
+
+        cc.eliminarArticulo(100);
+        cc.eliminarArticulo(105);
+        cc.listarArticulos();
+        System.out.println("*********Generando Ticket**************");
         cc.calculaTotal();
         cc.imprimeTicket();
 
